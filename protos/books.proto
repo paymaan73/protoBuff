@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package books;
+
+service BookService {
+  rpc GetBooks (EmptyParams) returns (Books) {}
+  rpc GetBook (BookID) returns (Book) {}
+}
+
+message Book {
+  int32 id = 1;
+  string title = 2;
+}
+
+message Books {
+  repeated Book books = 1;
+}
+
+message EmptyParams {}
+
+message BookID {
+  int32 id = 1;
+}
+
+message BookNotFound {
+  string message = 1;
+}
